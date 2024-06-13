@@ -5,6 +5,7 @@ from .conversable_agent import ConversableAgent, register_function
 from .groupchat import GroupChat, GroupChatManager
 from .user_proxy_agent import UserProxyAgent
 from .utils import gather_usage_summary
+from .need_speak_agent import NeedSpeakAgent
 
 __all__ = (
     "Agent",
@@ -17,4 +18,6 @@ __all__ = (
     "initiate_chats",
     "gather_usage_summary",
     "ChatResult",
+    "NeedSpeakAgent"
+
 )

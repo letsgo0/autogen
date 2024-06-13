@@ -13,6 +13,7 @@ from autogen.cache import Cache
 from autogen.io.base import IOStream
 from autogen.logger.logger_utils import get_current_ts
 from autogen.oai.openai_utils import OAI_PRICE1K, get_key, is_valid_api_key
+from autogen.oai.qian_fan import QianfanClient
 from autogen.runtime_logging import log_chat_completion, log_new_client, log_new_wrapper, logging_enabled
 from autogen.token_count_utils import count_token
 
@@ -163,6 +164,7 @@ class OpenAIClient:
         Returns:
             The completion.
         """
+
         iostream = IOStream.get_default()
 
         completions: Completions = self._oai_client.chat.completions if "messages" in params else self._oai_client.completions  # type: ignore [attr-defined]
@@ -436,6 +438,8 @@ class OpenAIWrapper:
                 if gemini_import_exception:
                     raise ImportError("Please install `google-generativeai` to use Google OpenAI API.")
                 self._clients.append(GeminiClient(**openai_config))
+            elif api_type is not None and api_type.startswith("qianfan"):
+                self._clients.append(QianfanClient(**openai_config))
             else:
                 client = OpenAI(**openai_config)
                 self._clients.append(OpenAIClient(client))
