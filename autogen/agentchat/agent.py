@@ -83,7 +83,7 @@ class Agent(Protocol):
         """
         ...
 
-    def generate_reply(
+    def  generate_reply(
         self,
         messages: Optional[List[Dict[str, Any]]] = None,
         sender: Optional["Agent"] = None,
