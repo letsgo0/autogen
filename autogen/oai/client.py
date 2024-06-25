@@ -470,13 +470,10 @@ class OpenAIWrapper:
             elif api_type is not None and api_type.startswith("google"):
                 if gemini_import_exception:
                     raise ImportError("Please install `google-generativeai` to use Google OpenAI API.")
-<<<<<<< HEAD
-                self._clients.append(GeminiClient(**openai_config))
-            elif api_type is not None and api_type.startswith("qianfan"):
-                self._clients.append(QianfanClient(**openai_config))
-=======
                 client = GeminiClient(**openai_config)
                 self._clients.append(client)
+            elif api_type is not None and api_type.startswith("qianfan"):
+                self._clients.append(QianfanClient(**openai_config))
             elif api_type is not None and api_type.startswith("anthropic"):
                 if anthropic_import_exception:
                     raise ImportError("Please install `anthropic` to use Anthropic API.")
@@ -491,7 +488,6 @@ class OpenAIWrapper:
                 if together_import_exception:
                     raise ImportError("Please install `together` to use the Together.AI API.")
                 self._clients.append(TogetherClient(**config))
->>>>>>> github_origin/main
             else:
                 client = OpenAI(**openai_config)
                 self._clients.append(OpenAIClient(client))

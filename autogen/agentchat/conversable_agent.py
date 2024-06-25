@@ -1191,16 +1191,12 @@ class ConversableAgent(LLMAgent):
         return summary
 
     def _reflection_with_llm(
-<<<<<<< HEAD
-            self, prompt, messages, llm_agent: Optional[Agent] = None, cache: Optional[AbstractCache] = None
-=======
         self,
         prompt,
         messages,
         llm_agent: Optional[Agent] = None,
         cache: Optional[AbstractCache] = None,
         role: Union[str, None] = None,
->>>>>>> github_origin/main
     ) -> str:
         """Get a chat summary using reflection with an llm client based on the conversation history.
 
